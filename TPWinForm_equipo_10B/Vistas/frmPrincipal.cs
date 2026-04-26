@@ -18,7 +18,8 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button button3;
         private Button btnModificar_Click;
         private Button btnEliminar_Click;
-
+        private TextBox TextChanged;
+        private Label label3;
         private PictureBox pictureBox2;
 
         public frmPrincipal()
@@ -41,6 +42,8 @@ namespace TPWinForm_equipo_10B.Vistas
             this.btnModificar_Click = new System.Windows.Forms.Button();
             this.btnEliminar_Click = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.TextChanged = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +60,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(364, 49);
+            this.comboBox2.Location = new System.Drawing.Point(364, 51);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 3;
@@ -66,7 +69,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 52);
+            this.label1.Location = new System.Drawing.Point(46, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 4;
@@ -75,15 +78,16 @@ namespace TPWinForm_equipo_10B.Vistas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 52);
+            this.label2.Location = new System.Drawing.Point(308, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Buscar";
+            this.label2.Text = "Marcas";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(590, 49);
+            this.button2.Location = new System.Drawing.Point(590, 51);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 23);
             this.button2.TabIndex = 7;
@@ -145,9 +149,28 @@ namespace TPWinForm_equipo_10B.Vistas
             this.pictureBox2.VisibleChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // TextChanged
+            // 
+            this.TextChanged.Location = new System.Drawing.Point(113, 25);
+            this.TextChanged.Name = "TextChanged";
+            this.TextChanged.Size = new System.Drawing.Size(430, 20);
+            this.TextChanged.TabIndex = 32;
+            this.TextChanged.TextChanged += new System.EventHandler(this.TextChanged_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(46, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Buscar";
+            // 
             // frmPrincipal
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TextChanged);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnEliminar_Click);
             this.Controls.Add(this.btnModificar_Click);
@@ -337,6 +360,31 @@ namespace TPWinForm_equipo_10B.Vistas
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextChanged_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = TextChanged.Text;
+
+            if (filtro.Length >= 2)
+            {
+                var filtrada = listaArticulos.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtro.ToUpper()) ||
+                    x.Codigo.ToUpper().Contains(filtro.ToUpper()));
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = filtrada;
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = listaArticulos;
+            }
         }
     }
 }
