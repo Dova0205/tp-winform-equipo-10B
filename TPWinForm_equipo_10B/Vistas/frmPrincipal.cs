@@ -112,6 +112,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.button3.TabIndex = 9;
             this.button3.Text = "Agregar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -133,6 +134,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(590, 99);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(408, 211);
@@ -234,12 +236,10 @@ namespace TPWinForm_equipo_10B.Vistas
             dataGridView1.DataSource = listaArticulos;
         }
 
-       
-       
-        
-
-
-
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo ventanaAlta = new frmAltaArticulo();
+            ventanaAlta.ShowDialog();
+        }
     }
 }

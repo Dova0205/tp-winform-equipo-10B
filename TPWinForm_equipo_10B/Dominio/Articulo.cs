@@ -15,7 +15,7 @@ namespace TPWinForm_equipo_10B.Dominio
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
 
-        //public string UrlImagen { get; set; }
+        public string ImagenUrl { get; set; }
 
 
         public List<Imagen> Imagenes { get; set; }

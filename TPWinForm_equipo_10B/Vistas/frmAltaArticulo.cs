@@ -57,6 +57,8 @@ namespace TPWinForm_equipo_10B.Vistas
                 nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
 
+                nuevoArticulo.ImagenUrl = rutaImagen;
+
                 negocio.Agregar(nuevoArticulo);
 
                 MessageBox.Show("¡Artículo agregado exitosamente!");
@@ -65,6 +67,19 @@ namespace TPWinForm_equipo_10B.Vistas
             catch (Exception ex)
             {
                 MessageBox.Show("Ups, hubo un error al guardar: " + ex.Message);
+            }
+        }
+
+        private string rutaImagen = "";
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivo = new OpenFileDialog(); 
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                rutaImagen = archivo.FileName;
+                pbxArticulo.Load(rutaImagen);
             }
         }
     }
