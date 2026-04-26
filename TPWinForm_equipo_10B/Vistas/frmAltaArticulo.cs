@@ -59,7 +59,7 @@ namespace TPWinForm_equipo_10B.Vistas
                 {
                     if (!string.IsNullOrEmpty(articulo.ImagenUrl))
                     {
-                        pbxArticulo.Load(articulo.ImagenUrl);
+                        pbxArticulo.LoadAsync(articulo.ImagenUrl);
                         rutaImagen = articulo.ImagenUrl;
                     }
                 }
@@ -122,6 +122,11 @@ namespace TPWinForm_equipo_10B.Vistas
         private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -254,8 +254,8 @@ namespace TPWinForm_equipo_10B.Vistas
         private void button2_Click(object sender, EventArgs e)
         {
             // Resetear combos
-            comboBox1.SelectedIndex = -1; // Categoría
-            comboBox2.SelectedIndex = -1; // Marca
+            comboBox1.SelectedIndex = 0; // Categoría
+            comboBox2.SelectedIndex = 0; // Marca
 
             // Volver a cargar todos los artículos
             dataGridView1.DataSource = null;
@@ -320,7 +320,7 @@ namespace TPWinForm_equipo_10B.Vistas
                     if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
                     {
                         // Intentamos cargar la foto
-                        pictureBox2.Load(seleccionado.Imagenes[0].ImagenUrl);
+                        pictureBox2.LoadAsync(seleccionado.Imagenes[0].ImagenUrl);
                     }
                     else
                     {
