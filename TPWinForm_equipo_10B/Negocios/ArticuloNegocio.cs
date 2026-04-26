@@ -119,5 +119,24 @@ namespace TPWinForm_equipo_10B.Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void Eliminar(int id)
+        {
+            ConexionBD datos = new ConexionBD();
+            try
+            {
+                datos.SetearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @id; DELETE FROM ARTICULOS WHERE Id = @id;"); 
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }   
     }
 }

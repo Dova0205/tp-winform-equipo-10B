@@ -21,7 +21,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private DataGridView dataGridView1;
         private Button button3;
         private Button btnModificar_Click;
-        private Button button5;
+        private Button btnEliminar_Click;
         
         private PictureBox pictureBox2;
 
@@ -43,7 +43,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.btnModificar_Click = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnEliminar_Click = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -125,14 +125,15 @@ namespace TPWinForm_equipo_10B.Vistas
             this.btnModificar_Click.UseVisualStyleBackColor = true;
             this.btnModificar_Click.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // btnEliminar_Click
             // 
-            this.button5.Location = new System.Drawing.Point(424, 331);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(119, 41);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Eliminar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnEliminar_Click.Location = new System.Drawing.Point(424, 331);
+            this.btnEliminar_Click.Name = "btnEliminar_Click";
+            this.btnEliminar_Click.Size = new System.Drawing.Size(119, 41);
+            this.btnEliminar_Click.TabIndex = 11;
+            this.btnEliminar_Click.Text = "Eliminar";
+            this.btnEliminar_Click.UseVisualStyleBackColor = true;
+            this.btnEliminar_Click.Click += new System.EventHandler(this.button5_Click);
             // 
             // pictureBox2
             // 
@@ -150,7 +151,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnEliminar_Click);
             this.Controls.Add(this.btnModificar_Click);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
@@ -180,17 +181,26 @@ namespace TPWinForm_equipo_10B.Vistas
             comboBox1.DataSource = null;
             comboBox1.Items.Clear();
             CategoriaNegocio catNegocio = new CategoriaNegocio();
-            comboBox1.DataSource = catNegocio.Listar();
+            List<Categoria> listaCategorias = catNegocio.Listar();// Guardamos la lista en una variable
+            Categoria opcionTodos = new Categoria();// Creamos nuestra opción
+            opcionTodos.Id = 0;
+            opcionTodos.Descripcion = "Todos los productos";
+            listaCategorias.Insert(0, opcionTodos);// La metemos en la primera posición (índice 0)
+            comboBox1.DataSource = listaCategorias;
             comboBox1.DisplayMember = "Descripcion";
             comboBox1.ValueMember = "Id";
 
             comboBox2.DataSource = null;
             comboBox2.Items.Clear();
             MarcaNegocio marNegocio = new MarcaNegocio();
-            comboBox2.DataSource = marNegocio.Listar();
+            List<Marca> listaMarcas = marNegocio.Listar();
+            Marca opcionTodas = new Marca();
+            opcionTodas.Id = 0;
+            opcionTodas.Descripcion = "Todas las marcas";
+            listaMarcas.Insert(0, opcionTodas);
+            comboBox2.DataSource = listaMarcas;
             comboBox2.DisplayMember = "Descripcion";
             comboBox2.ValueMember = "Id";
-
 
         }
 
@@ -204,11 +214,20 @@ namespace TPWinForm_equipo_10B.Vistas
             if (!int.TryParse(comboBox1.SelectedValue.ToString(), out id))
                 return;
 
-            var filtrada = listaArticulos.FindAll(x =>
-                x.Categoria != null && x.Categoria.Id == id);
+            // Si el ID es 0, significa que eligió "Todos los productos"
+            if (id == 0)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = listaArticulos; // Pasamos la lista original completa
+            }
+            else
+            {
+                // Si es cualquier otro ID, filtramos por esa categoría específica
+                var filtrada = listaArticulos.FindAll(x => x.Categoria != null && x.Categoria.Id == id);
 
-            // dataGridView1.DataSource = null;
-            dataGridView1.DataSource = filtrada;
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = filtrada;
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -221,11 +240,18 @@ namespace TPWinForm_equipo_10B.Vistas
             if (!int.TryParse(comboBox2.SelectedValue.ToString(), out id))
                 return;
 
-            var filtrada = listaArticulos.FindAll(x =>
-                x.Marca != null && x.Marca.Id == id);
+            if (id == 0)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = listaArticulos;
+            }
+            else
+            {
+                var filtrada = listaArticulos.FindAll(x => x.Marca != null && x.Marca.Id == id);
 
-            // dataGridView1.DataSource = null;
-            dataGridView1.DataSource = filtrada;
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = filtrada;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -260,6 +286,31 @@ namespace TPWinForm_equipo_10B.Vistas
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Seguro que desea eliminar el artículo seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
+                    negocio.Eliminar(seleccionado.Id);
+                    MessageBox.Show("Artículo eliminado correctamente.");
+                    // Refrescar la lista de artículos después de eliminar
+                    listaArticulos = negocio.Listar();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = listaArticulos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el artículo: " + ex.Message);
+            }
         }
     }
 }

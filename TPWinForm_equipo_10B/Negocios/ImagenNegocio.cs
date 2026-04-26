@@ -31,9 +31,6 @@ namespace TPWinForm_equipo_10B.Negocio
                     else
                         continue; // ignorar registros inválidos
 
-                  
-
-
                     lista.Add(aux);
                 }
                 return lista;
