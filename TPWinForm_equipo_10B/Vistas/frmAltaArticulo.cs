@@ -13,6 +13,12 @@ namespace TPWinForm_equipo_10B.Vistas
             InitializeComponent();
         }
 
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Artículo";
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -38,6 +44,29 @@ namespace TPWinForm_equipo_10B.Vistas
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al cargar los desplegables: " + ex.Message);
+            }
+
+            if (articulo != null)
+            {
+                txtCodigo.Text = articulo.Codigo;
+                txtNombre.Text = articulo.Nombre;
+                txtDescripcion.Text = articulo.Descripcion;
+                txtPrecio.Text = articulo.Precio.ToString();
+                cboMarca.SelectedValue = articulo.Marca.Id;
+                cboCategoria.SelectedValue = articulo.Categoria.Id;
+
+                try 
+                { 
+                    if(!string.IsNullOrEmpty(articulo.ImagenUrl))
+                    {
+                        pbxArticulo.Load(articulo.ImagenUrl);
+                        rutaImagen = articulo.ImagenUrl;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hubo un error al cargar la imagen: " + ex.Message);
+                }
             }
         }
 
@@ -81,6 +110,18 @@ namespace TPWinForm_equipo_10B.Vistas
                 rutaImagen = archivo.FileName;
                 pbxArticulo.Load(rutaImagen);
             }
+        }
+
+        private Articulo articulo = null;
+
+        private void pbxArticulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

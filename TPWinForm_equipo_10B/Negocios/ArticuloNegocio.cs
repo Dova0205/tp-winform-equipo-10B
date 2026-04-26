@@ -80,6 +80,33 @@ namespace TPWinForm_equipo_10B.Negocio
                 datos.SetearParametro("@idMarca", nuevo.Marca.Id);
                 datos.SetearParametro("@idCat", nuevo.Categoria.Id);
                 datos.SetearParametro("@precio", nuevo.Precio);
+                
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public void Modificar(Articulo modificar)
+        {
+            ConexionBD datos = new ConexionBD();
+            try
+            {
+                datos.SetearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, IdMarca = @idMarca, IdCategoria = @idCat, Precio = @precio WHERE Id = @id");
+                datos.SetearParametro("@codigo", modificar.Codigo);
+                datos.SetearParametro("@nombre", modificar.Nombre);
+                datos.SetearParametro("@desc", modificar.Descripcion);
+                datos.SetearParametro("@idMarca", modificar.Marca.Id);
+                datos.SetearParametro("@idCat", modificar.Categoria.Id);
+                datos.SetearParametro("@precio", modificar.Precio);
+                datos.SetearParametro("@id", modificar.Id);
 
                 datos.EjecutarAccion();
             }

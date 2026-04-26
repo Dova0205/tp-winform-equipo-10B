@@ -20,7 +20,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button button2;
         private DataGridView dataGridView1;
         private Button button3;
-        private Button button4;
+        private Button btnModificar_Click;
         private Button button5;
         
         private PictureBox pictureBox2;
@@ -42,7 +42,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnModificar_Click = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -103,6 +103,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.dataGridView1.RowHeadersWidth = 45;
             this.dataGridView1.Size = new System.Drawing.Size(430, 211);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button3
             // 
@@ -114,14 +115,15 @@ namespace TPWinForm_equipo_10B.Vistas
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btnModificar_Click
             // 
-            this.button4.Location = new System.Drawing.Point(270, 331);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 41);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Modificar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnModificar_Click.Location = new System.Drawing.Point(270, 331);
+            this.btnModificar_Click.Name = "btnModificar_Click";
+            this.btnModificar_Click.Size = new System.Drawing.Size(119, 41);
+            this.btnModificar_Click.TabIndex = 10;
+            this.btnModificar_Click.Text = "Modificar";
+            this.btnModificar_Click.UseVisualStyleBackColor = true;
+            this.btnModificar_Click.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -142,13 +144,14 @@ namespace TPWinForm_equipo_10B.Vistas
             this.pictureBox2.TabIndex = 31;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.VisibleChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // frmPrincipal
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnModificar_Click);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
@@ -240,6 +243,23 @@ namespace TPWinForm_equipo_10B.Vistas
         {
             frmAltaArticulo ventanaAlta = new frmAltaArticulo();
             ventanaAlta.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Articulo selecionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
+            frmAltaArticulo modificar = new frmAltaArticulo(selecionado);
+            modificar.ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
