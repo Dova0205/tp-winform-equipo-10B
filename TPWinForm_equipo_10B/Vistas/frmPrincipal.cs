@@ -18,7 +18,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button button3;
         private Button btnModificar_Click;
         private Button btnEliminar_Click;
-        private TextBox TextChanged;
+        private TextBox txtFiltro_TextChanged;
         private Label label3;
         private PictureBox pictureBox2;
 
@@ -42,7 +42,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.btnModificar_Click = new System.Windows.Forms.Button();
             this.btnEliminar_Click = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.TextChanged = new System.Windows.Forms.TextBox();
+            this.txtFiltro_TextChanged = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -151,11 +151,11 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // TextChanged
             // 
-            this.TextChanged.Location = new System.Drawing.Point(113, 25);
-            this.TextChanged.Name = "TextChanged";
-            this.TextChanged.Size = new System.Drawing.Size(430, 20);
-            this.TextChanged.TabIndex = 32;
-            this.TextChanged.TextChanged += new System.EventHandler(this.TextChanged_TextChanged);
+            this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 25);
+            this.txtFiltro_TextChanged.Name = "TextChanged";
+            this.txtFiltro_TextChanged.Size = new System.Drawing.Size(430, 20);
+            this.txtFiltro_TextChanged.TabIndex = 32;
+            this.txtFiltro_TextChanged.TextChanged += new System.EventHandler(this.TextChanged_TextChanged);
             // 
             // label3
             // 
@@ -170,7 +170,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TextChanged);
+            this.Controls.Add(this.txtFiltro_TextChanged);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnEliminar_Click);
             this.Controls.Add(this.btnModificar_Click);
@@ -369,7 +369,7 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void TextChanged_TextChanged(object sender, EventArgs e)
         {
-            string filtro = TextChanged.Text;
+            string filtro = txtFiltro_TextChanged.Text;
 
             if (filtro.Length >= 2)
             {

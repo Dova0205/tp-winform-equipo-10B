@@ -75,6 +75,11 @@ namespace TPWinForm_equipo_10B.Vistas
             Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
+            if (!ValidarCampos())
+            {
+                return;
+            }
+
             try
             {
                 nuevoArticulo.Codigo = txtCodigo.Text;
@@ -114,6 +119,36 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private Articulo articulo = null;
 
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                MessageBox.Show("El articulo necesita un código.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("El articulo necesita un nombre.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            decimal precio;
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("El precio ingresado no es válido. Asegurate de usar solo numeros", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (precio < 0)
+            {
+                MessageBox.Show("El precio no puede ser negativo.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+        
         private void pbxArticulo_Click(object sender, EventArgs e)
         {
 
@@ -127,6 +162,20 @@ namespace TPWinForm_equipo_10B.Vistas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.'  )
+            {
+                e.Handled = true;
+                MessageBox.Show("No puedes ingresar letras en el campo de precio.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
