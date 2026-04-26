@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using TPWinForm_equipo_10B.AccesoDatos;
 using TPWinForm_equipo_10B.Dominio;
 

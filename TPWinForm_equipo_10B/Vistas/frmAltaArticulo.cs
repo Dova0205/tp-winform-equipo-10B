@@ -55,9 +55,9 @@ namespace TPWinForm_equipo_10B.Vistas
                 cboMarca.SelectedValue = articulo.Marca.Id;
                 cboCategoria.SelectedValue = articulo.Categoria.Id;
 
-                try 
-                { 
-                    if(!string.IsNullOrEmpty(articulo.ImagenUrl))
+                try
+                {
+                    if (!string.IsNullOrEmpty(articulo.ImagenUrl))
                     {
                         pbxArticulo.Load(articulo.ImagenUrl);
                         rutaImagen = articulo.ImagenUrl;
@@ -102,7 +102,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private string rutaImagen = "";
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog archivo = new OpenFileDialog(); 
+            OpenFileDialog archivo = new OpenFileDialog();
             archivo.Filter = "jpg|*.jpg;|png|*.png";
 
             if (archivo.ShowDialog() == DialogResult.OK)

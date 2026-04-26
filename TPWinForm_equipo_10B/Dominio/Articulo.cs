@@ -14,7 +14,6 @@ namespace TPWinForm_equipo_10B.Dominio
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
-
         public string ImagenUrl { get; set; }
 
 

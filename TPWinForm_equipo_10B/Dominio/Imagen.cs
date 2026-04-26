@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TPWinForm_equipo_10B.Dominio
+﻿namespace TPWinForm_equipo_10B.Dominio
 {
     public class Imagen
     {

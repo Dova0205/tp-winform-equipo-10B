@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Security.Policy;
-using System.Text;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
@@ -22,7 +18,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button button3;
         private Button btnModificar_Click;
         private Button btnEliminar_Click;
-        
+
         private PictureBox pictureBox2;
 
         public frmPrincipal()
@@ -104,6 +100,8 @@ namespace TPWinForm_equipo_10B.Vistas
             this.dataGridView1.Size = new System.Drawing.Size(430, 211);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // button3
             // 
@@ -201,7 +199,6 @@ namespace TPWinForm_equipo_10B.Vistas
             comboBox2.DataSource = listaMarcas;
             comboBox2.DisplayMember = "Descripcion";
             comboBox2.ValueMember = "Id";
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,6 +308,35 @@ namespace TPWinForm_equipo_10B.Vistas
             {
                 MessageBox.Show("Error al eliminar el artículo: " + ex.Message);
             }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
+                try
+                {
+                    if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+                    {
+                        // Intentamos cargar la foto
+                        pictureBox2.Load(seleccionado.Imagenes[0].ImagenUrl);
+                    }
+                    else
+                    {
+                        pictureBox2.Image = null;
+                    }
+                }
+                catch (Exception)
+                {
+                    pictureBox2.Image = null;
+                }
+            }
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
         }
     }
 }
