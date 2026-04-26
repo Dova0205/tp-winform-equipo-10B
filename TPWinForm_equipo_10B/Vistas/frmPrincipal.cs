@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
+using TPWinForm_equipo_10B.Dominio;
+using TPWinForm_equipo_10B.Negocio;
+using TPWinForm_equipo_10B.Negocios;
 
 namespace TPWinForm_equipo_10B.Vistas
 {
     public partial class frmPrincipal : Form
     {
-        private TextBox txtBoxBuscar;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
         private Label label1;
         private Label label2;
-        private Button button1;
         private Button button2;
         private DataGridView dataGridView1;
         private Button button3;
@@ -31,27 +35,28 @@ namespace TPWinForm_equipo_10B.Vistas
         private TextBox textBox3;
         private ComboBox comboBox3;
         private ComboBox comboBox4;
-        private ListView listView1;
         private ListView listView2;
         private Button button6;
         private Button button7;
         private Button button8;
+        
+        private PictureBox pictureBox2;
         private Label label11;
-        private Label lblBuscar;
 
         public frmPrincipal()
         {
+            InitializeComponent();
         }
 
         private void InitializeComponent()
+
+
+
         {
-            this.txtBoxBuscar = new System.Windows.Forms.TextBox();
-            this.lblBuscar = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
@@ -70,30 +75,15 @@ namespace TPWinForm_equipo_10B.Vistas
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.listView2 = new System.Windows.Forms.ListView();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtBoxBuscar
-            // 
-            this.txtBoxBuscar.Location = new System.Drawing.Point(113, 12);
-            this.txtBoxBuscar.Name = "txtBoxBuscar";
-            this.txtBoxBuscar.Size = new System.Drawing.Size(430, 20);
-            this.txtBoxBuscar.TabIndex = 0;
-            // 
-            // lblBuscar
-            // 
-            this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(45, 19);
-            this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(40, 13);
-            this.lblBuscar.TabIndex = 1;
-            this.lblBuscar.Text = "Buscar";
             // 
             // comboBox1
             // 
@@ -102,6 +92,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -110,6 +101,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 3;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -129,15 +121,6 @@ namespace TPWinForm_equipo_10B.Vistas
             this.label2.TabIndex = 5;
             this.label2.Text = "Buscar";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(590, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(590, 47);
@@ -146,18 +129,21 @@ namespace TPWinForm_equipo_10B.Vistas
             this.button2.TabIndex = 7;
             this.button2.Text = "Limpiar Filtros";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(113, 99);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(430, 150);
+            this.dataGridView1.RowHeadersWidth = 45;
+            this.dataGridView1.Size = new System.Drawing.Size(430, 211);
             this.dataGridView1.TabIndex = 8;
+           
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(113, 267);
+            this.button3.Location = new System.Drawing.Point(104, 331);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(119, 41);
             this.button3.TabIndex = 9;
@@ -166,7 +152,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(274, 270);
+            this.button4.Location = new System.Drawing.Point(265, 334);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 34);
             this.button4.TabIndex = 10;
@@ -175,7 +161,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(433, 270);
+            this.button5.Location = new System.Drawing.Point(424, 334);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(119, 32);
             this.button5.TabIndex = 11;
@@ -292,15 +278,6 @@ namespace TPWinForm_equipo_10B.Vistas
             this.comboBox4.Size = new System.Drawing.Size(245, 21);
             this.comboBox4.TabIndex = 24;
             // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(580, 101);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(263, 148);
-            this.listView1.TabIndex = 25;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // listView2
             // 
             this.listView2.HideSelection = false;
@@ -346,15 +323,25 @@ namespace TPWinForm_equipo_10B.Vistas
             this.label11.TabIndex = 30;
             this.label11.Text = "$400";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(590, 99);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(408, 211);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 31;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.VisibleChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // frmPrincipal
             // 
-            this.ClientSize = new System.Drawing.Size(876, 717);
+            this.ClientSize = new System.Drawing.Size(1119, 717);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox3);
@@ -373,20 +360,96 @@ namespace TPWinForm_equipo_10B.Vistas
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lblBuscar);
-            this.Controls.Add(this.txtBoxBuscar);
             this.Name = "frmPrincipal";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private List<Articulo> listaArticulos;
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            listaArticulos = negocio.Listar();
+
+            dataGridView1.DataSource = listaArticulos;
+
+
+            comboBox1.DataSource = null;
+            comboBox1.Items.Clear();
+            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            comboBox1.DataSource = catNegocio.Listar();
+            comboBox1.DisplayMember = "Descripcion";
+            comboBox1.ValueMember = "Id";
+
+            comboBox2.DataSource = null;
+            comboBox2.Items.Clear();
+            MarcaNegocio marNegocio = new MarcaNegocio();
+            comboBox2.DataSource = marNegocio.Listar();
+            comboBox2.DisplayMember = "Descripcion";
+            comboBox2.ValueMember = "Id";
+
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue == null)
+                return;
+
+            int id;
+
+            if (!int.TryParse(comboBox1.SelectedValue.ToString(), out id))
+                return;
+
+            var filtrada = listaArticulos.FindAll(x =>
+                x.Categoria != null && x.Categoria.Id == id);
+
+            // dataGridView1.DataSource = null;
+            dataGridView1.DataSource = filtrada;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedValue == null)
+                return;
+
+            int id;
+
+            if (!int.TryParse(comboBox2.SelectedValue.ToString(), out id))
+                return;
+
+            var filtrada = listaArticulos.FindAll(x =>
+                x.Marca != null && x.Marca.Id == id);
+
+            // dataGridView1.DataSource = null;
+            dataGridView1.DataSource = filtrada;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Resetear combos
+            comboBox1.SelectedIndex = -1; // Categoría
+            comboBox2.SelectedIndex = -1; // Marca
+
+            // Volver a cargar todos los artículos
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaArticulos;
+        }
+
        
+       
+        
+
+
+
+
     }
 }

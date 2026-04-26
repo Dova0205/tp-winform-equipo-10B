@@ -52,7 +52,9 @@
     <Compile Include="Dominio\Imagen.cs" />
     <Compile Include="Dominio\Marca.cs" />
     <Compile Include="Negocios\ArticuloNegocio.cs" />
+    <Compile Include="Negocios\CategoriaNegocio.cs" />
     <Compile Include="Negocios\ImagenNegocio.cs" />
+    <Compile Include="Negocios\MarcaNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vistas\frmPrincipal.cs">

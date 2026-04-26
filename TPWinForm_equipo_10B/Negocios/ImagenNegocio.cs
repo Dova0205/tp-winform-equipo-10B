@@ -22,9 +22,18 @@ namespace TPWinForm_equipo_10B.Negocio
                 while (datos.Lector.Read())
                 {
                     Imagen aux = new Imagen();
+
                     aux.Id = (int)datos.Lector["Id"];
                     aux.IdArticulo = (int)datos.Lector["IdArticulo"];
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    else
+                        continue; // ignorar registros inválidos
+
+                  
+
+
                     lista.Add(aux);
                 }
                 return lista;

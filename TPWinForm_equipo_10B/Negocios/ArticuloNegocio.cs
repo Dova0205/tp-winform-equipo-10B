@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using System.Text.RegularExpressions;
 using TPWinForm_equipo_10B.AccesoDatos;
@@ -13,6 +14,8 @@ namespace TPWinForm_equipo_10B.Negocio
         {
             List<Articulo> lista = new List<Articulo>();
             ConexionBD datos = new ConexionBD();
+         
+
 
             try
             {
@@ -29,11 +32,16 @@ namespace TPWinForm_equipo_10B.Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+
+
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
+                    //aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    aux.Imagenes = imagenNegocio.ListarPorArticulo(aux.Id);
 
                     aux.Marca = new Marca();
                     aux.Marca.Id = (int)datos.Lector["IdMarca"];
@@ -42,6 +50,9 @@ namespace TPWinForm_equipo_10B.Negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["CatDesc"];
+
+                   
+
 
                     lista.Add(aux);
                 }
