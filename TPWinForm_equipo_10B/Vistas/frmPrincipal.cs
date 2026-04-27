@@ -24,6 +24,7 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button buttonMarca;
         private Button btnAnterior;
         private Button btnSiguiente;
+        private Label label4;
         private PictureBox pictureBox2;
 
         public frmPrincipal()
@@ -52,6 +53,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.buttonMarca = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 51);
+            this.comboBox1.Location = new System.Drawing.Point(113, 87);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 2;
@@ -68,7 +70,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 83);
+            this.comboBox2.Location = new System.Drawing.Point(113, 119);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 3;
@@ -77,7 +79,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 54);
+            this.label1.Location = new System.Drawing.Point(46, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 4;
@@ -86,7 +88,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 83);
+            this.label2.Location = new System.Drawing.Point(46, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 5;
@@ -95,9 +97,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(573, 23);
+            this.button2.Location = new System.Drawing.Point(573, 61);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 23);
+            this.button2.Size = new System.Drawing.Size(98, 20);
             this.button2.TabIndex = 7;
             this.button2.Text = "Limpiar Filtros";
             this.button2.UseVisualStyleBackColor = true;
@@ -106,7 +108,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(113, 122);
+            this.dataGridView1.Location = new System.Drawing.Point(113, 158);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 45;
             this.dataGridView1.Size = new System.Drawing.Size(430, 211);
@@ -117,7 +119,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 139);
+            this.button3.Location = new System.Drawing.Point(12, 175);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 41);
             this.button3.TabIndex = 9;
@@ -127,7 +129,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnModificar_Click
             // 
-            this.btnModificar_Click.Location = new System.Drawing.Point(12, 200);
+            this.btnModificar_Click.Location = new System.Drawing.Point(12, 236);
             this.btnModificar_Click.Name = "btnModificar_Click";
             this.btnModificar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnModificar_Click.TabIndex = 10;
@@ -137,7 +139,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnEliminar_Click
             // 
-            this.btnEliminar_Click.Location = new System.Drawing.Point(12, 265);
+            this.btnEliminar_Click.Location = new System.Drawing.Point(12, 298);
             this.btnEliminar_Click.Name = "btnEliminar_Click";
             this.btnEliminar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnEliminar_Click.TabIndex = 11;
@@ -148,7 +150,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(573, 122);
+            this.pictureBox2.Location = new System.Drawing.Point(573, 158);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(408, 211);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,7 +161,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // txtFiltro_TextChanged
             // 
-            this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 25);
+            this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 61);
             this.txtFiltro_TextChanged.Name = "txtFiltro_TextChanged";
             this.txtFiltro_TextChanged.Size = new System.Drawing.Size(430, 20);
             this.txtFiltro_TextChanged.TabIndex = 32;
@@ -168,7 +170,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 28);
+            this.label3.Location = new System.Drawing.Point(46, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 33;
@@ -176,7 +178,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // buttonCategoria
             // 
-            this.buttonCategoria.Location = new System.Drawing.Point(311, 51);
+            this.buttonCategoria.Location = new System.Drawing.Point(311, 87);
             this.buttonCategoria.Name = "buttonCategoria";
             this.buttonCategoria.Size = new System.Drawing.Size(83, 23);
             this.buttonCategoria.TabIndex = 34;
@@ -186,7 +188,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // buttonMarca
             // 
-            this.buttonMarca.Location = new System.Drawing.Point(311, 81);
+            this.buttonMarca.Location = new System.Drawing.Point(311, 119);
             this.buttonMarca.Name = "buttonMarca";
             this.buttonMarca.Size = new System.Drawing.Size(83, 23);
             this.buttonMarca.TabIndex = 35;
@@ -196,7 +198,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnAnterior
             // 
-            this.btnAnterior.Location = new System.Drawing.Point(679, 339);
+            this.btnAnterior.Location = new System.Drawing.Point(679, 375);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 23);
             this.btnAnterior.TabIndex = 36;
@@ -206,7 +208,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(771, 339);
+            this.btnSiguiente.Location = new System.Drawing.Point(771, 375);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
             this.btnSiguiente.TabIndex = 37;
@@ -214,9 +216,21 @@ namespace TPWinForm_equipo_10B.Vistas
             this.btnSiguiente.UseVisualStyleBackColor = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(46, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(189, 17);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "GESTOR DE CATALOGO";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // frmPrincipal
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.buttonMarca);
@@ -233,6 +247,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmPrincipal";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -548,6 +563,11 @@ namespace TPWinForm_equipo_10B.Vistas
                 indiceImagen = imagenesActuales.Count - 1;
 
             MostrarImagen();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

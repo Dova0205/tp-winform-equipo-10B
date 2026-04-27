@@ -229,5 +229,9 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private List<string> listaUrls = new List<string>();
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
