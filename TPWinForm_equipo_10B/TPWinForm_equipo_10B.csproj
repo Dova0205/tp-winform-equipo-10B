@@ -58,6 +58,18 @@
     <Compile Include="Negocios\MarcaNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vistas\frmAdministrarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmAdministrarCategoria.Designer.cs">
+      <DependentUpon>frmAdministrarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmAdministrarMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmAdministrarMarca.Designer.cs">
+      <DependentUpon>frmAdministrarMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\frmAltaArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +89,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vistas\frmAdministrarCategoria.resx">
+      <DependentUpon>frmAdministrarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmAdministrarMarca.resx">
+      <DependentUpon>frmAdministrarMarca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmAltaArticulo.resx">
       <DependentUpon>frmAltaArticulo.cs</DependentUpon>
     </EmbeddedResource>
