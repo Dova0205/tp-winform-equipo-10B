@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
@@ -19,6 +20,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.articulo = articulo;
             Text = "Modificar Artículo";
         }
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -33,8 +35,8 @@ namespace TPWinForm_equipo_10B.Vistas
             {
                 // Llenamos el combo de Marcas
                 cboMarca.DataSource = marcaNegocio.Listar();
-                cboMarca.ValueMember = "Id"; // El dato oculto que se guarda (la clave primaria)
-                cboMarca.DisplayMember = "Descripcion"; // El texto que ve el usuario (ej: "Motorola")
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
 
                 // Llenamos el combo de Categorías
                 cboCategoria.DataSource = categoriaNegocio.Listar();
@@ -52,6 +54,7 @@ namespace TPWinForm_equipo_10B.Vistas
                 txtNombre.Text = articulo.Nombre;
                 txtDescripcion.Text = articulo.Descripcion;
                 txtPrecio.Text = articulo.Precio.ToString();
+
                 cboMarca.SelectedValue = articulo.Marca.Id;
                 cboCategoria.SelectedValue = articulo.Categoria.Id;
 
@@ -72,30 +75,38 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             if (!ValidarCampos())
-            {
                 return;
-            }
 
             try
             {
-                nuevoArticulo.Codigo = txtCodigo.Text;
-                nuevoArticulo.Nombre = txtNombre.Text;
-                nuevoArticulo.Descripcion = txtDescripcion.Text;
+                if (articulo == null)
+                    articulo = new Articulo();
 
-                nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
 
-                nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                nuevoArticulo.ImagenUrl = rutaImagen;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
 
-                negocio.Agregar(nuevoArticulo);
+                articulo.ImagenUrl = rutaImagen;
 
-                MessageBox.Show("¡Artículo agregado exitosamente!");
+                if (articulo.Id != 0)
+                {
+                    negocio.Modificar(articulo);
+                    MessageBox.Show("¡Artículo modificado exitosamente!");
+                }
+                else
+                {
+                    negocio.Agregar(articulo);
+                    MessageBox.Show("¡Artículo agregado exitosamente!");
+                }
+
                 Close();
             }
             catch (Exception ex)
@@ -105,6 +116,7 @@ namespace TPWinForm_equipo_10B.Vistas
         }
 
         private string rutaImagen = "";
+        /*
         private void btnImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog archivo = new OpenFileDialog();
@@ -116,6 +128,35 @@ namespace TPWinForm_equipo_10B.Vistas
                 pbxArticulo.Load(rutaImagen);
             }
         }
+        */
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+
+            string url = txtUrlImagen.Text;
+
+            if (url == "")
+            {
+                MessageBox.Show("Ingrese una URL de imagen.");
+                return;
+            }
+
+            listaUrls.Add(url);
+
+            try
+            {
+                pbxArticulo.LoadAsync(url);
+            }
+            catch
+            {
+                MessageBox.Show("No se pudo cargar la imagen.");
+            }
+
+            txtUrlImagen.Text = ""; // limpia el campo
+
+        }
+
+
+
 
         private Articulo articulo = null;
 
@@ -134,9 +175,10 @@ namespace TPWinForm_equipo_10B.Vistas
             }
 
             decimal precio;
+
             if (!decimal.TryParse(txtPrecio.Text, out precio))
             {
-                MessageBox.Show("El precio ingresado no es válido. Asegurate de usar solo numeros", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El precio ingresado no es válido. Asegurate de usar solo numeros.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -148,7 +190,7 @@ namespace TPWinForm_equipo_10B.Vistas
 
             return true;
         }
-        
+
         private void pbxArticulo_Click(object sender, EventArgs e)
         {
 
@@ -166,16 +208,26 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void txtPrecio_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.'  )
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar) &&
+                e.KeyChar != ',' &&
+                e.KeyChar != '.')
             {
                 e.Handled = true;
-                MessageBox.Show("No puedes ingresar letras en el campo de precio.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                MessageBox.Show("No puedes ingresar letras en el campo de precio.",
+                    "Atencion",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
+
+        private List<string> listaUrls = new List<string>();
+
     }
 }

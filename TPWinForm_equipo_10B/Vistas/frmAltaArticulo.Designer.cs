@@ -46,6 +46,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUrlImagen = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // 
             // btnImagen
             // 
-            this.btnImagen.Location = new System.Drawing.Point(115, 291);
+            this.btnImagen.Location = new System.Drawing.Point(115, 316);
             this.btnImagen.Name = "btnImagen";
             this.btnImagen.Size = new System.Drawing.Size(245, 34);
             this.btnImagen.TabIndex = 45;
@@ -211,11 +213,29 @@
             this.pbxArticulo.TabStop = false;
             this.pbxArticulo.Click += new System.EventHandler(this.pbxArticulo_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "URL Imagen";
+            // 
+            // txtUrlImagen
+            // 
+            this.txtUrlImagen.Location = new System.Drawing.Point(115, 283);
+            this.txtUrlImagen.Name = "txtUrlImagen";
+            this.txtUrlImagen.Size = new System.Drawing.Size(245, 20);
+            this.txtUrlImagen.TabIndex = 51;
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 408);
+            this.Controls.Add(this.txtUrlImagen);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.btnGuardar);
@@ -262,5 +282,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtUrlImagen;
     }
 }

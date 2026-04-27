@@ -20,6 +20,10 @@ namespace TPWinForm_equipo_10B.Vistas
         private Button btnEliminar_Click;
         private TextBox txtFiltro_TextChanged;
         private Label label3;
+        private Button buttonCategoria;
+        private Button buttonMarca;
+        private Button btnAnterior;
+        private Button btnSiguiente;
         private PictureBox pictureBox2;
 
         public frmPrincipal()
@@ -44,6 +48,10 @@ namespace TPWinForm_equipo_10B.Vistas
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtFiltro_TextChanged = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.buttonCategoria = new System.Windows.Forms.Button();
+            this.buttonMarca = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +68,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(364, 51);
+            this.comboBox2.Location = new System.Drawing.Point(113, 83);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 3;
@@ -78,7 +86,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 54);
+            this.label2.Location = new System.Drawing.Point(46, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 5;
@@ -87,7 +95,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(590, 51);
+            this.button2.Location = new System.Drawing.Point(573, 23);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 23);
             this.button2.TabIndex = 7;
@@ -98,7 +106,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(113, 99);
+            this.dataGridView1.Location = new System.Drawing.Point(113, 122);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 45;
             this.dataGridView1.Size = new System.Drawing.Size(430, 211);
@@ -109,9 +117,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(113, 331);
+            this.button3.Location = new System.Drawing.Point(12, 139);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 41);
+            this.button3.Size = new System.Drawing.Size(86, 41);
             this.button3.TabIndex = 9;
             this.button3.Text = "Agregar";
             this.button3.UseVisualStyleBackColor = true;
@@ -119,9 +127,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnModificar_Click
             // 
-            this.btnModificar_Click.Location = new System.Drawing.Point(270, 331);
+            this.btnModificar_Click.Location = new System.Drawing.Point(12, 200);
             this.btnModificar_Click.Name = "btnModificar_Click";
-            this.btnModificar_Click.Size = new System.Drawing.Size(119, 41);
+            this.btnModificar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnModificar_Click.TabIndex = 10;
             this.btnModificar_Click.Text = "Modificar";
             this.btnModificar_Click.UseVisualStyleBackColor = true;
@@ -129,9 +137,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnEliminar_Click
             // 
-            this.btnEliminar_Click.Location = new System.Drawing.Point(424, 331);
+            this.btnEliminar_Click.Location = new System.Drawing.Point(12, 265);
             this.btnEliminar_Click.Name = "btnEliminar_Click";
-            this.btnEliminar_Click.Size = new System.Drawing.Size(119, 41);
+            this.btnEliminar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnEliminar_Click.TabIndex = 11;
             this.btnEliminar_Click.Text = "Eliminar";
             this.btnEliminar_Click.UseVisualStyleBackColor = true;
@@ -140,7 +148,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(590, 99);
+            this.pictureBox2.Location = new System.Drawing.Point(573, 122);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(408, 211);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -149,10 +157,10 @@ namespace TPWinForm_equipo_10B.Vistas
             this.pictureBox2.VisibleChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // TextChanged
+            // txtFiltro_TextChanged
             // 
             this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 25);
-            this.txtFiltro_TextChanged.Name = "TextChanged";
+            this.txtFiltro_TextChanged.Name = "txtFiltro_TextChanged";
             this.txtFiltro_TextChanged.Size = new System.Drawing.Size(430, 20);
             this.txtFiltro_TextChanged.TabIndex = 32;
             this.txtFiltro_TextChanged.TextChanged += new System.EventHandler(this.TextChanged_TextChanged);
@@ -166,9 +174,53 @@ namespace TPWinForm_equipo_10B.Vistas
             this.label3.TabIndex = 33;
             this.label3.Text = "Buscar";
             // 
+            // buttonCategoria
+            // 
+            this.buttonCategoria.Location = new System.Drawing.Point(311, 51);
+            this.buttonCategoria.Name = "buttonCategoria";
+            this.buttonCategoria.Size = new System.Drawing.Size(83, 23);
+            this.buttonCategoria.TabIndex = 34;
+            this.buttonCategoria.Text = "Administrar";
+            this.buttonCategoria.UseVisualStyleBackColor = true;
+            this.buttonCategoria.Click += new System.EventHandler(this.buttonCategoria_Click);
+            // 
+            // buttonMarca
+            // 
+            this.buttonMarca.Location = new System.Drawing.Point(311, 81);
+            this.buttonMarca.Name = "buttonMarca";
+            this.buttonMarca.Size = new System.Drawing.Size(83, 23);
+            this.buttonMarca.TabIndex = 35;
+            this.buttonMarca.Text = "Administrar";
+            this.buttonMarca.UseVisualStyleBackColor = true;
+            this.buttonMarca.Click += new System.EventHandler(this.buttonMarca_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(679, 339);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 36;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(771, 339);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.TabIndex = 37;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
             // frmPrincipal
             // 
             this.ClientSize = new System.Drawing.Size(1049, 442);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.buttonMarca);
+            this.Controls.Add(this.buttonCategoria);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFiltro_TextChanged);
             this.Controls.Add(this.pictureBox2);
@@ -289,6 +341,7 @@ namespace TPWinForm_equipo_10B.Vistas
         {
             frmAltaArticulo ventanaAlta = new frmAltaArticulo();
             ventanaAlta.ShowDialog();
+            CargarGrid();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -296,6 +349,7 @@ namespace TPWinForm_equipo_10B.Vistas
             Articulo selecionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
             frmAltaArticulo modificar = new frmAltaArticulo(selecionado);
             modificar.ShowDialog();
+            CargarGrid();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -325,6 +379,7 @@ namespace TPWinForm_equipo_10B.Vistas
                     listaArticulos = negocio.Listar();
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = listaArticulos;
+                    CargarGrid();
                 }
             }
             catch (Exception ex)
@@ -332,7 +387,7 @@ namespace TPWinForm_equipo_10B.Vistas
                 MessageBox.Show("Error al eliminar el artículo: " + ex.Message);
             }
         }
-
+        /*
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
@@ -354,6 +409,39 @@ namespace TPWinForm_equipo_10B.Vistas
                 {
                     pictureBox2.Image = null;
                 }
+            }
+        }
+        */
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
+
+                imagenesActuales = seleccionado.Imagenes;
+                indiceImagen = 0;
+
+                MostrarImagen();
+            }
+        }
+
+        private void MostrarImagen()
+        {
+            try
+            {
+                if (imagenesActuales != null && imagenesActuales.Count > 0)
+                {
+                    pictureBox2.LoadAsync(imagenesActuales[indiceImagen].ImagenUrl);
+                }
+                else
+                {
+                    pictureBox2.Image = null;
+                }
+            }
+            catch
+            {
+                pictureBox2.Image = null;
             }
         }
 
@@ -385,6 +473,81 @@ namespace TPWinForm_equipo_10B.Vistas
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = listaArticulos;
             }
+        }
+
+        private void CargarGrid()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            listaArticulos = negocio.Listar();
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaArticulos;
+        }
+
+        private void CargarCombos()
+        {
+            MarcaNegocio marNegocio = new MarcaNegocio();
+
+            comboBox2.DataSource = null;
+            comboBox2.Items.Clear();
+
+            List<Marca> listaMarcas = marNegocio.Listar();
+
+            Marca opcionTodas = new Marca();
+            opcionTodas.Id = 0;
+            opcionTodas.Descripcion = "Todas las marcas";
+
+            listaMarcas.Insert(0, opcionTodas);
+
+            comboBox2.DataSource = listaMarcas;
+            comboBox2.DisplayMember = "Descripcion";
+            comboBox2.ValueMember = "Id";
+        }
+
+        private void buttonMarca_Click(object sender, EventArgs e)
+        {
+            frmAdministrarMarca ventana = new frmAdministrarMarca();
+            ventana.ShowDialog();
+            CargarGrid();
+            CargarCombos();
+        }
+
+        private void buttonCategoria_Click(object sender, EventArgs e)
+        {
+            frmAdministrarCategoria ventana = new frmAdministrarCategoria();
+            ventana.ShowDialog();
+            CargarGrid();
+            CargarCombos();
+        }
+
+        private int indiceImagen = 0;
+        private List<Imagen> imagenesActuales = new List<Imagen>();
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (imagenesActuales == null || imagenesActuales.Count == 0)
+                return;
+
+            indiceImagen++;
+
+            if (indiceImagen >= imagenesActuales.Count)
+                indiceImagen = 0; // vuelve al inicio
+
+            MostrarImagen();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (imagenesActuales == null || imagenesActuales.Count == 0)
+                return;
+
+            indiceImagen--;
+
+            if (indiceImagen < 0)
+                indiceImagen = imagenesActuales.Count - 1;
+
+            MostrarImagen();
         }
     }
 }

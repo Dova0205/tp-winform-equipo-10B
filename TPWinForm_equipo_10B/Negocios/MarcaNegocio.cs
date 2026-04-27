@@ -39,5 +39,45 @@ namespace TPWinForm_equipo_10B.Negocios
             }
         }
 
+        public void Agregar(string descripcion)
+        {
+            ConexionBD datos = new ConexionBD();
+
+            try
+            {
+                datos.SetearConsulta("insert into MARCAS values (@desc)");
+                datos.SetearParametro("@desc", descripcion);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public void Eliminar(int id)
+        {
+            ConexionBD datos = new ConexionBD();
+
+            try
+            {
+                datos.SetearConsulta("delete from MARCAS where Id = @id");
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
 }
