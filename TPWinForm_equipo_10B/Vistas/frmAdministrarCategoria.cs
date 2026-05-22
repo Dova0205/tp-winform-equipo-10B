@@ -42,10 +42,10 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCategorias.CurrentRow != null)
+            if (e.RowIndex < 0) return; // evita cabeceras
+            var row = dgvCategorias.Rows[e.RowIndex];
+            if (row?.DataBoundItem is Categoria seleccionada)
             {
-                Marca seleccionada = (Marca)dgvCategorias.CurrentRow.DataBoundItem;
-
                 textCategoria.Text = seleccionada.Descripcion;
             }
         }

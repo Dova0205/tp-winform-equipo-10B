@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
@@ -78,12 +79,24 @@ namespace TPWinForm_equipo_10B.Vistas
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             if (!ValidarCampos())
+            {
                 return;
+            }
 
             try
             {
                 if (articulo == null)
                     articulo = new Articulo();
+
+                List<Articulo> listaActual = negocio.Listar();
+
+                bool codigoRepetido = listaActual.Any(x => x.Codigo.ToUpper() == txtCodigo.Text.ToUpper() && x.Id != articulo.Id);
+
+                if (codigoRepetido)
+                {
+                    MessageBox.Show("Ya existe un artículo con ese Código en el inventario. Elegí otro.", "Código Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; 
+                }
 
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;

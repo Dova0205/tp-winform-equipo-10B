@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocios;
+using System.Data.SqlClient;
 
 namespace TPWinForm_equipo_10B.Vistas
 {
@@ -99,6 +100,17 @@ namespace TPWinForm_equipo_10B.Vistas
                     textMarca.Clear();
                 }
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                if (ex.Number == 547)
+                {
+                    MessageBox.Show("No podés eliminar esta categoría porque hay artículos que la están usando. Cambiales la categoría primero.", "Ataque bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error en la base de datos: " + ex.Message);
+                }
+            }   
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al eliminar la marca: " + ex.Message);

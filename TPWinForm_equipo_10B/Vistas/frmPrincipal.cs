@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
 using TPWinForm_equipo_10B.Negocios;
+using System.Data.SqlClient;
 
 namespace TPWinForm_equipo_10B.Vistas
 {
@@ -358,6 +359,11 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo antes de modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             Articulo selecionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
             frmAltaArticulo modificar = new frmAltaArticulo(selecionado);
             modificar.ShowDialog();
@@ -393,6 +399,17 @@ namespace TPWinForm_equipo_10B.Vistas
                     dataGridView1.DataSource = listaArticulos;
                     OcultarColumnas();
                     CargarGrid();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                if (ex.Number == 547)
+                {
+                    MessageBox.Show("No podés eliminar esta categoría porque hay artículos que la están usando. Cambiales la categoría primero.", "Ataque bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error en la base de datos: " + ex.Message);
                 }
             }
             catch (Exception ex)
