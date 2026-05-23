@@ -110,6 +110,7 @@ namespace TPWinForm_equipo_10B.Negocio
 
         public void Modificar(Articulo modificar)
         {
+            // --- ACTUALIZAR EL ARTÍCULO ---
             ConexionBD datos = new ConexionBD();
             try
             {
@@ -117,8 +118,8 @@ namespace TPWinForm_equipo_10B.Negocio
                 datos.SetearParametro("@codigo", modificar.Codigo);
                 datos.SetearParametro("@nombre", modificar.Nombre);
                 datos.SetearParametro("@desc", modificar.Descripcion);
-                datos.SetearParametro("@idMarca", modificar.Marca.Id);
-                datos.SetearParametro("@idCat", modificar.Categoria.Id);
+                datos.SetearParametro("@idMarca", modificar.Marca != null ? (object)modificar.Marca.Id : DBNull.Value);
+                datos.SetearParametro("@idCat", modificar.Categoria != null ? (object)modificar.Categoria.Id : DBNull.Value);
                 datos.SetearParametro("@precio", modificar.Precio);
                 datos.SetearParametro("@id", modificar.Id);
 
@@ -131,6 +132,26 @@ namespace TPWinForm_equipo_10B.Negocio
             finally
             {
                 datos.CerrarConexion();
+            }
+
+            // --- ACTUALIZAR LA IMAGEN ---
+            ConexionBD datosImg = new ConexionBD();
+            try
+            {
+                // Borramos la imagen vinculada a este artículo e insertamos la nueva
+                datosImg.SetearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @idArt; INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArt, @url)");
+                datosImg.SetearParametro("@idArt", modificar.Id);
+                datosImg.SetearParametro("@url", modificar.ImagenUrl);
+
+                datosImg.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datosImg.CerrarConexion();
             }
         }
 

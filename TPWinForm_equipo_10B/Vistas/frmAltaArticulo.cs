@@ -168,9 +168,6 @@ namespace TPWinForm_equipo_10B.Vistas
 
         }
 
-
-
-
         private Articulo articulo = null;
 
         private bool ValidarCampos()
@@ -198,6 +195,18 @@ namespace TPWinForm_equipo_10B.Vistas
             if (precio < 0)
             {
                 MessageBox.Show("El precio no puede ser negativo.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (cboMarca.SelectedItem == null || cboMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccioná una Marca para el artículo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (cboCategoria.SelectedItem == null || cboCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccioná una Categoría para el artículo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
