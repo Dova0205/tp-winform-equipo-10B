@@ -75,7 +75,6 @@
             this.dgvCategorias.RowHeadersWidth = 45;
             this.dgvCategorias.Size = new System.Drawing.Size(405, 183);
             this.dgvCategorias.TabIndex = 8;
-            this.dgvCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorias_CellContentClick);
             // 
             // buttonECategoria
             // 

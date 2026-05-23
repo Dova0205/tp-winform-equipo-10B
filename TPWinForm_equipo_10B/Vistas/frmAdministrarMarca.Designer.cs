@@ -67,7 +67,6 @@
             this.dgvMarcas.RowHeadersWidth = 45;
             this.dgvMarcas.Size = new System.Drawing.Size(405, 183);
             this.dgvMarcas.TabIndex = 2;
-            this.dgvMarcas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMarcas_CellContentClick_1);
             // 
             // label1
             // 

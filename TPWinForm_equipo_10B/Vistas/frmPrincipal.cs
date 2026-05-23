@@ -240,6 +240,7 @@ namespace TPWinForm_equipo_10B.Vistas
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

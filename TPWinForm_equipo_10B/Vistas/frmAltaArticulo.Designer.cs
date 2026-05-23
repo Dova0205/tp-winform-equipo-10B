@@ -257,6 +257,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "frmAltaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();

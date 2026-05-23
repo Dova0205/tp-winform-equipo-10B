@@ -44,11 +44,6 @@ namespace TPWinForm_equipo_10B.Vistas
         }
 
 
-        private void dgvMarcas_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void buttonAMarca_Click(object sender, EventArgs e)
         {
             MarcaNegocio negocio = new MarcaNegocio();
