@@ -285,60 +285,6 @@ namespace TPWinForm_equipo_10B.Vistas
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedValue == null)
-                return;
-
-            int id;
-
-            if (!int.TryParse(comboBox1.SelectedValue.ToString(), out id))
-                return;
-
-            // Si el ID es 0, significa que eligió "Todos los productos"
-            if (id == 0)
-            {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = listaArticulos; // Pasamos la lista original completa
-                OcultarColumnas();
-            }
-            else
-            {
-                // Si es cualquier otro ID, filtramos por esa categoría específica
-                var filtrada = listaArticulos.FindAll(x => x.Categoria != null && x.Categoria.Id == id);
-
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = filtrada;
-                OcultarColumnas();
-            }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox2.SelectedValue == null)
-                return;
-
-            int id;
-
-            if (!int.TryParse(comboBox2.SelectedValue.ToString(), out id))
-                return;
-
-            if (id == 0)
-            {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = listaArticulos;
-                OcultarColumnas();
-            }
-            else
-            {
-                var filtrada = listaArticulos.FindAll(x => x.Marca != null && x.Marca.Id == id);
-
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = filtrada;
-                OcultarColumnas();
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             // Resetear combos
@@ -423,31 +369,6 @@ namespace TPWinForm_equipo_10B.Vistas
                 MessageBox.Show("Error al eliminar el artículo: " + ex.Message);
             }
         }
-        /*
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                Articulo seleccionado = (Articulo)dataGridView1.CurrentRow.DataBoundItem;
-                try
-                {
-                    if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
-                    {
-                        // Intentamos cargar la foto
-                        pictureBox2.LoadAsync(seleccionado.Imagenes[0].ImagenUrl);
-                    }
-                    else
-                    {
-                        pictureBox2.Image = null;
-                    }
-                }
-                catch (Exception)
-                {
-                    pictureBox2.Image = null;
-                }
-            }
-        }
-        */
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -489,28 +410,6 @@ namespace TPWinForm_equipo_10B.Vistas
         private void label2_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void TextChanged_TextChanged(object sender, EventArgs e)
-        {
-            string filtro = txtFiltro_TextChanged.Text;
-
-            if (filtro.Length >= 2)
-            {
-                var filtrada = listaArticulos.FindAll(x =>
-                    x.Nombre.ToUpper().Contains(filtro.ToUpper()) ||
-                    x.Codigo.ToUpper().Contains(filtro.ToUpper()));
-
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = filtrada;
-                OcultarColumnas();
-            }
-            else
-            {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = listaArticulos;
-                OcultarColumnas();
-            }
         }
 
         private void CargarGrid()
@@ -590,22 +489,78 @@ namespace TPWinForm_equipo_10B.Vistas
         }
         private void OcultarColumnas()
         {
-            // Usamos un try-catch por las dudas. Si en el futuro cambiás el nombre de una propiedad 
-            // y te olvidás de cambiarlo acá, el programa ignora el error en vez de cerrarse.
-            try
+            if (dataGridView1.Columns["Id"] != null)
             {
                 dataGridView1.Columns["Id"].Visible = false;
+            }
+
+            if (dataGridView1.Columns["ImagenUrl"] != null)
+            {
                 dataGridView1.Columns["ImagenUrl"].Visible = false;
             }
-            catch (Exception)
+
+            if (dataGridView1.Columns["Imagenes"] != null)
             {
-                // Si no encuentra la columna, sigue de largo en silencio
+                dataGridView1.Columns["Imagenes"].Visible = false;
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltrosAvanzados();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltrosAvanzados();
+        }
+
+        private void TextChanged_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltrosAvanzados();
+        }
+
+        private void AplicarFiltrosAvanzados()
+        {
+            List<Articulo> listaFiltrada = listaArticulos;
+
+            // Aplicamos el filtro de TEXTO (sobre la lista completa)
+            string filtroTexto = txtFiltro_TextChanged.Text;
+            if (filtroTexto.Length >= 2)
+            {
+                listaFiltrada = listaFiltrada.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtroTexto.ToUpper()) ||
+                    x.Codigo.ToUpper().Contains(filtroTexto.ToUpper()));
+            }
+
+            // Aplicamos el filtro de CATEGORÍA (sobre lo que quedó del texto)
+            if (comboBox1.SelectedValue != null)
+            {
+                int idCategoria;
+                if (int.TryParse(comboBox1.SelectedValue.ToString(), out idCategoria) && idCategoria != 0)
+                {
+                    listaFiltrada = listaFiltrada.FindAll(x => x.Categoria != null && x.Categoria.Id == idCategoria);
+                }
+            }
+
+            // Aplicamos el filtro de MARCA (sobre lo que quedó del texto y la categoría)
+            if (comboBox2.SelectedValue != null)
+            {
+                int idMarca;
+                if (int.TryParse(comboBox2.SelectedValue.ToString(), out idMarca) && idMarca != 0)
+                {
+                    listaFiltrada = listaFiltrada.FindAll(x => x.Marca != null && x.Marca.Id == idMarca);
+                }
+            }
+
+            // Mandamos la lista súper filtrada a la grilla
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaFiltrada;
+            OcultarColumnas();
         }
     }
 }
