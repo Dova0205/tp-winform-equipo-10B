@@ -61,7 +61,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 51);
+            this.comboBox1.Location = new System.Drawing.Point(113, 54);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 83);
+            this.comboBox2.Location = new System.Drawing.Point(433, 55);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 3;
@@ -80,16 +80,17 @@ namespace TPWinForm_equipo_10B.Vistas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 54);
+            this.label1.Location = new System.Drawing.Point(46, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Categoria";
+            this.label1.Text = "Categorias";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 86);
+            this.label2.Location = new System.Drawing.Point(385, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 5;
@@ -98,9 +99,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(573, 23);
+            this.button2.Location = new System.Drawing.Point(618, 27);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 23);
+            this.button2.Size = new System.Drawing.Size(83, 23);
             this.button2.TabIndex = 7;
             this.button2.Text = "Limpiar Filtros";
             this.button2.UseVisualStyleBackColor = true;
@@ -110,12 +111,12 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(113, 122);
+            this.dataGridView1.Location = new System.Drawing.Point(113, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 45;
-            this.dataGridView1.Size = new System.Drawing.Size(603, 211);
+            this.dataGridView1.Size = new System.Drawing.Size(603, 210);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
@@ -123,7 +124,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 139);
+            this.button3.Location = new System.Drawing.Point(12, 111);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 41);
             this.button3.TabIndex = 9;
@@ -133,7 +134,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnModificar_Click
             // 
-            this.btnModificar_Click.Location = new System.Drawing.Point(12, 200);
+            this.btnModificar_Click.Location = new System.Drawing.Point(12, 172);
             this.btnModificar_Click.Name = "btnModificar_Click";
             this.btnModificar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnModificar_Click.TabIndex = 10;
@@ -143,7 +144,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnEliminar_Click
             // 
-            this.btnEliminar_Click.Location = new System.Drawing.Point(12, 265);
+            this.btnEliminar_Click.Location = new System.Drawing.Point(12, 237);
             this.btnEliminar_Click.Name = "btnEliminar_Click";
             this.btnEliminar_Click.Size = new System.Drawing.Size(86, 41);
             this.btnEliminar_Click.TabIndex = 11;
@@ -154,9 +155,9 @@ namespace TPWinForm_equipo_10B.Vistas
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(736, 122);
+            this.pictureBox2.Location = new System.Drawing.Point(736, 93);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(211, 211);
+            this.pictureBox2.Size = new System.Drawing.Size(210, 210);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 31;
             this.pictureBox2.TabStop = false;
@@ -165,16 +166,16 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // txtFiltro_TextChanged
             // 
-            this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 25);
+            this.txtFiltro_TextChanged.Location = new System.Drawing.Point(113, 28);
             this.txtFiltro_TextChanged.Name = "txtFiltro_TextChanged";
-            this.txtFiltro_TextChanged.Size = new System.Drawing.Size(430, 20);
+            this.txtFiltro_TextChanged.Size = new System.Drawing.Size(499, 20);
             this.txtFiltro_TextChanged.TabIndex = 32;
             this.txtFiltro_TextChanged.TextChanged += new System.EventHandler(this.TextChanged_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 28);
+            this.label3.Location = new System.Drawing.Point(46, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 33;
@@ -182,7 +183,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // buttonCategoria
             // 
-            this.buttonCategoria.Location = new System.Drawing.Point(311, 51);
+            this.buttonCategoria.Location = new System.Drawing.Point(298, 53);
             this.buttonCategoria.Name = "buttonCategoria";
             this.buttonCategoria.Size = new System.Drawing.Size(83, 23);
             this.buttonCategoria.TabIndex = 34;
@@ -192,7 +193,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // buttonMarca
             // 
-            this.buttonMarca.Location = new System.Drawing.Point(311, 81);
+            this.buttonMarca.Location = new System.Drawing.Point(618, 54);
             this.buttonMarca.Name = "buttonMarca";
             this.buttonMarca.Size = new System.Drawing.Size(83, 23);
             this.buttonMarca.TabIndex = 35;
@@ -202,7 +203,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnAnterior
             // 
-            this.btnAnterior.Location = new System.Drawing.Point(764, 339);
+            this.btnAnterior.Location = new System.Drawing.Point(763, 310);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 23);
             this.btnAnterior.TabIndex = 36;
@@ -212,7 +213,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(845, 339);
+            this.btnSiguiente.Location = new System.Drawing.Point(845, 310);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
             this.btnSiguiente.TabIndex = 37;
@@ -222,7 +223,7 @@ namespace TPWinForm_equipo_10B.Vistas
             // 
             // frmPrincipal
             // 
-            this.ClientSize = new System.Drawing.Size(1018, 442);
+            this.ClientSize = new System.Drawing.Size(982, 375);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.buttonMarca);
@@ -382,6 +383,11 @@ namespace TPWinForm_equipo_10B.Vistas
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo antes de eliminarlo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo seleccionado;
 
@@ -595,6 +601,11 @@ namespace TPWinForm_equipo_10B.Vistas
             {
                 // Si no encuentra la columna, sigue de largo en silencio
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

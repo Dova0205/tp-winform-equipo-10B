@@ -41,17 +41,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 72);
+            this.label2.Location = new System.Drawing.Point(15, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 18);
+            this.label2.Size = new System.Drawing.Size(116, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Nueva categoria:";
             // 
             // textCategoria
             // 
-            this.textCategoria.Location = new System.Drawing.Point(133, 73);
+            this.textCategoria.Location = new System.Drawing.Point(137, 73);
             this.textCategoria.Name = "textCategoria";
-            this.textCategoria.Size = new System.Drawing.Size(155, 20);
+            this.textCategoria.Size = new System.Drawing.Size(205, 20);
             this.textCategoria.TabIndex = 10;
             this.textCategoria.TextChanged += new System.EventHandler(this.textCategoria_TextChanged);
             // 
@@ -59,9 +59,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.69811F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(434, 33);
+            this.label1.Size = new System.Drawing.Size(411, 31);
             this.label1.TabIndex = 9;
             this.label1.Text = "ADMINISTRAR CATEGORIAS";
             // 
@@ -70,16 +70,18 @@
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.Location = new System.Drawing.Point(18, 112);
             this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.ReadOnly = true;
+            this.dgvCategorias.RowHeadersVisible = false;
             this.dgvCategorias.RowHeadersWidth = 45;
-            this.dgvCategorias.Size = new System.Drawing.Size(365, 183);
+            this.dgvCategorias.Size = new System.Drawing.Size(405, 183);
             this.dgvCategorias.TabIndex = 8;
             this.dgvCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorias_CellContentClick);
             // 
             // buttonECategoria
             // 
-            this.buttonECategoria.Location = new System.Drawing.Point(308, 311);
+            this.buttonECategoria.Location = new System.Drawing.Point(18, 311);
             this.buttonECategoria.Name = "buttonECategoria";
-            this.buttonECategoria.Size = new System.Drawing.Size(75, 23);
+            this.buttonECategoria.Size = new System.Drawing.Size(405, 49);
             this.buttonECategoria.TabIndex = 7;
             this.buttonECategoria.Text = "Eliminar";
             this.buttonECategoria.UseVisualStyleBackColor = true;
@@ -87,7 +89,7 @@
             // 
             // buttonACategoria
             // 
-            this.buttonACategoria.Location = new System.Drawing.Point(308, 72);
+            this.buttonACategoria.Location = new System.Drawing.Point(348, 72);
             this.buttonACategoria.Name = "buttonACategoria";
             this.buttonACategoria.Size = new System.Drawing.Size(75, 23);
             this.buttonACategoria.TabIndex = 6;
@@ -99,7 +101,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(455, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textCategoria);
             this.Controls.Add(this.label1);
