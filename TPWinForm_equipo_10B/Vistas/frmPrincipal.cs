@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
 using TPWinForm_equipo_10B.Negocios;
-using System.Data.SqlClient;
 
 namespace TPWinForm_equipo_10B.Vistas
 {

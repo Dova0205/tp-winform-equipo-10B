@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
+using TPWinForm_equipo_10B.Negocio;
 using TPWinForm_equipo_10B.Negocios;
-using System.Data.SqlClient;
 
 namespace TPWinForm_equipo_10B.Vistas
 {
@@ -20,7 +13,7 @@ namespace TPWinForm_equipo_10B.Vistas
             InitializeComponent();
         }
 
-            private void frmAdministrarMarca_Load(object sender, EventArgs e)
+        private void frmAdministrarMarca_Load(object sender, EventArgs e)
         {
             CargarGrid();
         }
@@ -110,7 +103,7 @@ namespace TPWinForm_equipo_10B.Vistas
                 {
                     MessageBox.Show("Error en la base de datos: " + ex.Message);
                 }
-            }   
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al eliminar la marca: " + ex.Message);

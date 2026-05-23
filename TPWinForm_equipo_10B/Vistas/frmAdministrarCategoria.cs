@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPWinForm_equipo_10B.Dominio;
 using TPWinForm_equipo_10B.Negocio;
-using TPWinForm_equipo_10B.Negocios;
 
 namespace TPWinForm_equipo_10B.Vistas
 {

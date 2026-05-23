@@ -95,7 +95,7 @@ namespace TPWinForm_equipo_10B.Vistas
                 if (codigoRepetido)
                 {
                     MessageBox.Show("Ya existe un artículo con ese Código en el inventario. Elegí otro.", "Código Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; 
+                    return;
                 }
 
                 articulo.Codigo = txtCodigo.Text;

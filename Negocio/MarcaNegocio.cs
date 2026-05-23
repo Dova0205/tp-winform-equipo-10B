@@ -5,7 +5,7 @@ using TPWinForm_equipo_10B.Dominio;
 
 namespace TPWinForm_equipo_10B.Negocios
 {
-    internal class MarcaNegocio
+    public class MarcaNegocio
     {
 
         public List<Marca> Listar()
